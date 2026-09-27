@@ -8,6 +8,7 @@ import java.util.List;
 
 @Service
 public class UserService {
+
     private final UserClient userClient;
     public UserService(UserClient userClient) {
         this.userClient = userClient;
@@ -15,7 +16,8 @@ public class UserService {
     public List<UserPlaceHolder> getUsers() {
         return userClient.getUsers()
                 .stream()
-                .filter(user -> user.getId() != null && user.getId() % 2 != 0)
+                .filter(user -> user.getId() != null
+                        && user.getId() % 2 != 0)
                 .toList();
     }
 }
